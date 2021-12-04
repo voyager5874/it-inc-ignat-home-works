@@ -1,0 +1,65 @@
+
+.wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 300px;
+    min-height: 100px;
+    justify-content: space-between;
+
+
+}
+
+
+.affairsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+
+}
+
+.buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    justify-content: space-between;
+    align-items: flex-end;
+
+}
+
+.affair {
+    height: 30px;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+
+
+}
+
+.deleteButton {
+    width: 25px;
+    margin-left: 20px;
+    height: 25px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+.buttonsContainer button {
+    height: 30px;
+    width: 60px;
+    font-weight: bold;
+
+}
+
+.high{
+    color:red;
+}
+.low{
+    color: green;
+}
+.middle{
+    color:orange;
+}
