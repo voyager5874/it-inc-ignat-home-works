@@ -12,11 +12,12 @@ function Affair(props: AffairPropsType) {
     const deleteCallback = () => {
         props.deleteAffairCallback(props.affair._id)
     }// need to fix
-    let priorityClass = props.affair.priority === 'low' ? s.low: props.affair.priority === 'middle' ? s.middle : s.high;
+    // let priorityClass = props.affair.priority === 'low' ? s.low: props.affair.priority === 'middle' ? s.middle : s.high;
     return (
         <div className={s.affair}>
             <span>{props.affair.name}</span>
-            <span className={priorityClass}>({props.affair.priority})</span>
+            {/*<span className={priorityClass}>({props.affair.priority})</span>*/}
+            <span className={s[props.affair.priority]}>({props.affair.priority})</span>
             <button className={s.deleteButton} onClick={deleteCallback}>X</button>
         </div>
     )
