@@ -7,6 +7,7 @@ type AffairsPropsType = { // need to fix any
     data: Array<AffairType>
     setFilter: (filter: FilterType) => void
     deleteAffairCallback: (affairID: number) => void
+    filter: FilterType
 }
 
 function Affairs(props: AffairsPropsType) {
@@ -18,8 +19,10 @@ function Affairs(props: AffairsPropsType) {
         />
     ))
 
+
     const setAll = () => {
         props.setFilter('all')
+
     } // need to fix
     const setHigh = () => {
         props.setFilter('high')
@@ -38,10 +41,10 @@ function Affairs(props: AffairsPropsType) {
         </div>
 
         <div className={s.buttonsContainer}>
-            <button onClick={setAll}>All</button>
-            <button onClick={setHigh}>High</button>
-            <button onClick={setMiddle}>Middle</button>
-            <button onClick={setLow}>Low</button>
+            <button className={props.filter === 'all' ? s.activeFilter : ''} onClick={setAll}>All</button>
+            <button className={props.filter === 'high' ? s.activeFilter : ''}onClick={setHigh}>High</button>
+            <button className={props.filter === 'middle' ? s.activeFilter : ''}onClick={setMiddle}>Middle</button>
+            <button className={props.filter === 'low' ? s.activeFilter : ''}onClick={setLow}>Low</button>
         </div>
 
         </div>

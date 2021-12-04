@@ -63,3 +63,7 @@
 .middle{
     color:orange;
 }
+
+.activeFilter{
+    opacity: 0.6;
+}
