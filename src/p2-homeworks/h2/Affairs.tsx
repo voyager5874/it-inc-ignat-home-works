@@ -36,16 +36,20 @@ function Affairs(props: AffairsPropsType) {
 
     return (
         <div className={s.wrapper}>
-        <div className={s.affairsContainer}>
-            {mappedAffairs}
-        </div>
+            <div className={s.affairsContainer}>
+                {mappedAffairs}
+            </div>
 
-        <div className={s.buttonsContainer}>
-            <button className={props.filter === 'all' ? s.activeFilter : ''} onClick={setAll}>All</button>
-            <button className={props.filter === 'high' ? s.activeFilter : ''}onClick={setHigh}>High</button>
-            <button className={props.filter === 'middle' ? s.activeFilter : ''}onClick={setMiddle}>Middle</button>
-            <button className={props.filter === 'low' ? s.activeFilter : ''}onClick={setLow}>Low</button>
-        </div>
+            <div className={s.buttonsContainer}>
+                {/*<button className={props.filter === 'all' ? s.activeFilter : ''} onClick={setAll}>All</button>*/}
+                {/*<button className={props.filter === 'high' ? s.activeFilter : ''}onClick={setHigh}>High</button>*/}
+                {/*<button className={props.filter === 'middle' ? s.activeFilter : ''}onClick={setMiddle}>Middle</button>*/}
+                {/*<button className={props.filter === 'low' ? s.activeFilter : ''}onClick={setLow}>Low</button>*/}
+                <button disabled={props.filter === 'all'} onClick={setAll}>All</button>
+                <button disabled={props.filter === 'high'} onClick={setHigh}>High</button>
+                <button disabled={props.filter === 'middle'} onClick={setMiddle}>Middle</button>
+                <button disabled={props.filter === 'low'} onClick={setLow}>Low</button>
+            </div>
 
         </div>
     )

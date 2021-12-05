@@ -1,7 +1,23 @@
-.someClass {
+.container {
+    display: flex;
+    flex-direction: column;
 
 }
 
 .error {
     border: 1px solid red;
+}
+
+.errorMessage{
+    color: darkred;
+    height: 20px;
+}
+
+.inputContainer button{
+    margin-left: 5px;
+    border-radius: 5px;
+    height: 22px;
+}
+.inputContainer input{
+    border-radius: 5px;
 }

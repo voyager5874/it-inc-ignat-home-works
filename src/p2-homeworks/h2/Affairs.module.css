@@ -5,10 +5,7 @@
     min-width: 300px;
     min-height: 100px;
     justify-content: space-between;
-
-
 }
-
 
 .affairsContainer {
     display: flex;
@@ -16,7 +13,9 @@
     justify-content: space-between;
     width: 100%;
     margin-bottom: 10px;
-
+    border-radius: 10px;
+    background-color: dimgrey;
+    padding: 10px;
 }
 
 .buttonsContainer {
@@ -25,7 +24,7 @@
     height: 40px;
     justify-content: space-between;
     align-items: flex-end;
-
+    padding-left: 20px;
 }
 
 .affair {
@@ -34,8 +33,6 @@
     display: flex;
     justify-content: space-between;
     font-weight: bold;
-
-
 }
 
 .deleteButton {
@@ -45,25 +42,25 @@
     background-color: red;
     color: white;
     font-weight: bold;
+    border-radius: 8px;
 }
 
 .buttonsContainer button {
     height: 30px;
     width: 60px;
     font-weight: bold;
-
 }
 
 .high{
-    color:red;
+    color:darkred;
 }
 .low{
-    color: green;
+    color: darkgreen;
 }
 .middle{
     color:orange;
 }
 
 .activeFilter{
-    opacity: 0.6;
+    background-color: firebrick;
 }
