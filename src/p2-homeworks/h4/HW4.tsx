@@ -22,15 +22,14 @@ function HW4() {
     return (
         <div>
             <hr/>
-            homeworks 4
-
+            <h3>homework 4</h3>
             <div className={s.column}>
                 <SuperInputText
                     value={text}
                     onChangeText={setText}
                     onEnter={showAlert}
                     error={error}
-                    // spanClassName={s.testSpanError}
+                    spanClassName={s.testSpanError}
                 />
 
                 <SuperInputText
@@ -39,8 +38,8 @@ function HW4() {
 
                 {/*----------------------------------------------------*/}
 
-                <SuperButton>
-                    default
+                <SuperButton className={s.greenButton}>
+                    Not just some default
                 </SuperButton>
 
                 <SuperButton
@@ -56,12 +55,13 @@ function HW4() {
 
                 {/*----------------------------------------------------*/}
 
-                <SuperCheckbox
+                <SuperCheckbox className={s.sliderCheckbox}
                     checked={checked}
                     onChangeChecked={setChecked}
                 >
-                    some text {/*// этот текст попадёт в children*/}
+                    I am a children of SuperCheckbox {/*// этот текст попадёт в children*/}
                 </SuperCheckbox>
+                {/*In JSX expressions that contain both an opening tag and a closing tag, the content between those tags is passed as a special prop: props.children*/}
 
                 {/*// onChange тоже должен работать*/}
                 <SuperCheckbox checked={checked} onChange={testOnChange}/>

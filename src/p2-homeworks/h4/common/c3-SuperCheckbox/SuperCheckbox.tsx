@@ -21,12 +21,16 @@ const SuperCheckbox: React.FC<SuperCheckboxPropsType> = (
 ) => {
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         // сделайте так чтоб работал onChange и onChangeChecked
+        onChange // если есть пропс onChange
+        && onChange(e) // то передать ему е (поскольку onChange не обязателен)
+        onChangeChecked // если есть пропс onChange
+        && onChangeChecked(e.currentTarget.checked) // то передать ему е (поскольку onChange не обязателен)
     }
 
-    const finalInputClassName = `${s.checkbox} ${className ? className : ''}`
+    const finalInputClassName = `${className ? className : s.checkbox}`
 
     return (
-        <label>
+        <label className={`${s.checkboxWrapper}`}>
             <input
                 type={'checkbox'}
                 onChange={onChangeCallback}
@@ -35,7 +39,8 @@ const SuperCheckbox: React.FC<SuperCheckboxPropsType> = (
                 {...restProps} // отдаём инпуту остальные пропсы если они есть (checked например там внутри)
             />
             {children && <span className={s.spanClassName}>{children}</span>}
-        </label> // благодаря label нажатие на спан передастся в инпут
+        </label> // благодаря label нажатие на спан передастся в инпут. Если приходит какое-то содержимое (children), то рисуется спан с этим содержимым
+        // In JSX expressions that contain both an opening tag and a closing tag, the content between those tags is passed as a special prop: props.children
     )
 }
 

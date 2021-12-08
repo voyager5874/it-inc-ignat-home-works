@@ -13,11 +13,39 @@
     height: 20px;
 }
 
+.inputContainer {
+    margin-top: 5px;
+}
+
 .inputContainer button{
+    cursor: pointer;
     margin-left: 5px;
     border-radius: 5px;
     height: 22px;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    box-shadow: 3px 3px darkslategray;
 }
+
+.inputContainer button:hover {
+    background-color: #3e8e41;
+}
+
+.inputContainer button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 0 #666;
+    transform: translateY(4px);
+}
+
 .inputContainer input{
+    height: 20px;
     border-radius: 5px;
+    border: 0;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
+
+.inputContainer input:focus {
+     outline: none;
+ }

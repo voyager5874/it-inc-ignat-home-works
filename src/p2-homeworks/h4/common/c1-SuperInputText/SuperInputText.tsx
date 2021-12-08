@@ -38,8 +38,12 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
         && onEnter() // то вызвать его
     }
 
-    const finalSpanClassName = `${s.error} ${spanClassName ? spanClassName : ''}`
-    const finalInputClassName = `${s.errorInput} ${className}` // need to fix with (?:) and s.superInput
+    const finalSpanClassName = `${spanClassName ? spanClassName : ''} ${s.error}` //span будет отрисован только если в пропсах придет ошибка,
+    // если в пропсах придет доп класс для span, он добавится. Порядок в строке выше не влияет - если в пропсах синий текст, то он синий на странице
+    const finalInputClassName = `${s.input} ${onEnter ? s.superInput : ''} ${error ? s.errorInput : ''} ${className}` //может отрисовываться как обычный инпут так и superInput,
+    // класс для superInput нужно добавлять только, если в пропсах приходит что-то относящееся к superInput (onChangeText, onEnter...), error не подойдет - может
+    // иметь falsy значение. Из HW может приходить дполнительный класс? "проверить работает ли смешивание классов" s.blue -
+    // приходит из HW4.module.css и добавляет подчеркивание синим
 
     return (
         <>

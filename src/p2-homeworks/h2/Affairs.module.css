@@ -36,6 +36,7 @@
 }
 
 .deleteButton {
+    cursor:pointer;
     width: 25px;
     margin-left: 20px;
     height: 25px;
@@ -45,10 +46,15 @@
     border-radius: 8px;
 }
 
-.buttonsContainer button {
+.deleteButton:hover{
+    background-color: darkred;
+}
+
+.filterButton {
     height: 30px;
     width: 60px;
     font-weight: bold;
+    border-radius: 5px;
 }
 
 .high{

@@ -1,7 +1,40 @@
-.checkbox {
-
+.checkboxWrapper{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    /*max-width: 500px;*/
+    min-width: 100px;
+    height: 50px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    border: 1px solid black;
 }
 
 .spanClassName {
+cursor: pointer;
+}
 
+.checkbox {
+    appearance: none;
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+
+
+.checkbox:hover {
+    background-color: #ccc;
+}
+
+.checkbox:checked {
+    background-color: #2196F3;
 }
