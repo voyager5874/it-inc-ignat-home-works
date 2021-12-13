@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './Header'
-import {AllRoutes} from './Routes'
+import {AllRoutes} from './AllRoutes'
 import {HashRouter} from "react-router-dom";
 
 function HW5() {
@@ -10,7 +10,6 @@ function HW5() {
             <HashRouter>
 
             <Header/>
-
             <AllRoutes/>
 
             </HashRouter>
