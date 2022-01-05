@@ -37,4 +37,5 @@ cursor: pointer;
 
 .checkbox:checked {
     background-color: #2196F3;
+    border: 5px solid white;
 }

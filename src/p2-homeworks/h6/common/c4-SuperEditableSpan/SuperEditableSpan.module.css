@@ -1,0 +1,9 @@
+.editableSpan{
+    border-bottom: 2px solid black;
+    /*display: inline-block;*/
+    height: 30px;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+
+}

@@ -59,7 +59,7 @@ function HW4() {
                     checked={checked}
                     onChangeChecked={setChecked}
                 >
-                    I am a children of SuperCheckbox {/*// этот текст попадёт в children*/}
+                    I am a child of SuperCheckbox {/*// этот текст попадёт в children*/}
                 </SuperCheckbox>
                 {/*In JSX expressions that contain both an opening tag and a closing tag, the content between those tags is passed as a special prop: props.children*/}
 

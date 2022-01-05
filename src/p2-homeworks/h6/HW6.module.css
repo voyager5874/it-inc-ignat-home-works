@@ -1,0 +1,23 @@
+.contentWrapper{
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+
+}
+.textFieldWrapper{
+    border: 1px solid black;
+    height: 50px;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+
+}
+
+.buttonsWrapper{
+    display: flex;
+    flex-direction: row;
+}
