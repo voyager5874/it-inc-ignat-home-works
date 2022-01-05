@@ -75,8 +75,8 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
                         <span style={{display:'inline-block'}}>{children || restProps.value}</span>
 
 
-                        <IconContext.Provider value={{ style: { marginLeft: '10px', paddingTop:'3px' } }}>
-                                 <FaRegEdit/>
+                        <IconContext.Provider value={{ style: { cursor: 'pointer', marginLeft: '10px', paddingTop:'4px' } }}>
+                                 <FaRegEdit onClick={()=>setEditMode(true)}/>
                         </IconContext.Provider>
 
                     </span>
