@@ -17,13 +17,22 @@ const SuperRadio: React.FC<SuperRadioPropsType> = (
 ) => {
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         // onChange, onChangeOption
+        onChange && onChange(e)
+        onChangeOption && onChangeOption(e.currentTarget.value)
     }
 
-
-    const mappedOptions: any[] = options ? options.map((o, i) => ( // map options with key
+// The radio group must have share the same name (the value of the name attribute) to be treated as a group
+// Once the radio group is created, selecting any radio button in that group automatically
+// deselects any other selected radio button in the same group.
+    const mappedOptions: any[] = options ? options.map((o, i) => (
         <label key={name + '-' + i}>
             <input
                 type={'radio'}
+                onChange={onChangeCallback}
+                name={name}
+                // checked={value===o} установит чекнутым один из элементов при загрузке страницы. В родительской компоненте задано arr[1], т.е. 'y'
+                value={o}
+                checked={value===o}
                 // name, checked, value, onChange
             />
             {o}

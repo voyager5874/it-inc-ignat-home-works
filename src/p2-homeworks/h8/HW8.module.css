@@ -1,0 +1,23 @@
+.usersTableWrapper{
+    width: 200px;
+    padding: 20px;
+    background-color: rgba(76, 110, 145, 0.47);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;;
+}
+
+.userLineWrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+    /*border: 1px solid black;*/
+}
+.userLineWrapper span{
+    display: inline-block;
+}
+
+.controlsWrapper{
+    margin-top: 20px;
+    display: flex;
+    /*justify-content: space-between;*/
+
+}
