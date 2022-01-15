@@ -1,10 +1,13 @@
 import React from 'react'
-import s from "./Header.module.css"
-import {NavLink} from "react-router-dom";
+import s from "./Navbar.module.css"
+import {NavLink, useNavigate} from "react-router-dom";
 import {PATH} from "./AllRoutes";
 
-function Header() {
+function Navbar() {
+    // you can use useNavigate to push users to various pages
 
+    // const navigate = useNavigate()
+    // navigate(PATH.PRE_JUNIOR)
 
     return (
             <div className={s.navbar}>
@@ -16,4 +19,4 @@ function Header() {
     )
 }
 
-export default Header
+export default Navbar

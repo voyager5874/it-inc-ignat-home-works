@@ -38,7 +38,7 @@ function HW8() {
     return (
         <div>
             <hr/>
-            <h3>homeworks 8</h3>
+            <h3>homework 8</h3>
             {/*should work (должно работать)*/}
             <div className={s.usersTableWrapper}>
                 {finalPeople}

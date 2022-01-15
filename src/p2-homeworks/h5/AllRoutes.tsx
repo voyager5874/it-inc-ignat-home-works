@@ -18,8 +18,8 @@ export function AllRoutes() {
             <Routes>
                 {/*в начале мы попадаем на страницу '/' и переходим сразу на страницу PRE_JUNIOR*/}
                 {/*exact был нужен чтоб указать полное совпадение (что после '/' ничего не будет) - теперь это поведение по умолчанию*/}
+                {/*Any component whose pathname is a backslash will get rendered first whenever the app loads for the first time*/}
                 <Route path={'/'} element={<PreJunior/>}/>
-                {/*<Route path={'/'} element={<Navigate to={PATH.PRE_JUNIOR}/>}/>*/}
                 <Route path={PATH.PRE_JUNIOR} element={<PreJunior/>}/>
                 <Route path={PATH.JUNIOR} element={<Junior/>}/>
                 <Route path={PATH.JUNIOR_PLUS} element={<JuniorPlus/>}/>
