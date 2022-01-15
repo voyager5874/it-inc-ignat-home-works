@@ -4,7 +4,7 @@ import s from './HW10.module.css'
 import './HW10.css'
 import {useDispatch, useSelector} from "react-redux";
 import {AppStoreType} from "./bll/store";
-import {setLoadingFalseAC, setLoadingTrueAC} from "./bll/loadingReducer";
+import {setLoadingStatusAC} from "./bll/loadingReducer";
 
 function HW10() {
     debugger
@@ -13,9 +13,9 @@ function HW10() {
     const dispatch = useDispatch()
 
     const setLoading = () => {
-        dispatch(setLoadingTrueAC())
+        dispatch(setLoadingStatusAC(true))
         setTimeout(()=>{
-            dispatch(setLoadingFalseAC())
+            dispatch(setLoadingStatusAC(false))
         },10000)
         console.log('loading...')
     };
@@ -23,9 +23,8 @@ function HW10() {
     debugger
 
     const random = (min: number, max:number) => Math.floor(Math.random() * (max - min)) + min;
-    // const exampleComplexClass = `${s.input} ${onEnter ? s.superInput : ''} ${error ? s.errorInput : ''} ${className}`
-    // let processIndicatorClass = `s.dotsBars${random(1, 11)}` //не работает
-    let processIndicatorClass = `dots-bars-${random(1, 11)}`
+    let processIndicatorClass = `dotsBars${random(1, 11)}`
+    // let processIndicatorClass = `dots-bars-${random(1, 11)}`
 
     return (
         <div>
@@ -36,7 +35,7 @@ function HW10() {
             {/*should work (должно работать)*/}
             {loading
                 ? (
-                    <div className={processIndicatorClass}></div>
+                    <div className={s[processIndicatorClass]}></div>
                 ) : (
                     <div>
                         <SuperButton onClick={setLoading}>set loading...</SuperButton>

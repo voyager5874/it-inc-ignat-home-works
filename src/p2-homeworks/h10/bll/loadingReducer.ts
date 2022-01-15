@@ -8,12 +8,7 @@ const initState: LoadingStateType = {
 
 export const loadingReducer = (state = initState, action: SetLoadingStatusActionType): LoadingStateType => { // fix any
     switch (action.type) {
-        case 'LOADING-ACTIVE': {
-            let stateCopy = {...state}
-            stateCopy.isLoading = action.payload.isLoading
-            return stateCopy
-        }
-        case 'LOADING-NOT-ACTIVE': {
+        case 'SET-LOADING-STATUS': {
             let stateCopy = {...state}
             stateCopy.isLoading = action.payload.isLoading
             return stateCopy
@@ -25,7 +20,7 @@ export const loadingReducer = (state = initState, action: SetLoadingStatusAction
 
 
 type SetLoadingStatusActionType = {
-    type:'LOADING-ACTIVE' | 'LOADING-NOT-ACTIVE'
+    type:'SET-LOADING-STATUS'
     payload:{
         isLoading: boolean
     }
@@ -33,21 +28,14 @@ type SetLoadingStatusActionType = {
 
 
 
-export const setLoadingTrueAC = (): SetLoadingStatusActionType => {
+export const setLoadingStatusAC = (newLoadingStatus: boolean): SetLoadingStatusActionType => {
     return {
-        type: 'LOADING-ACTIVE',
+        type: 'SET-LOADING-STATUS',
         payload: {
-            isLoading: true,
+            isLoading: newLoadingStatus,
         }
     } as const
 }
 
-export const setLoadingFalseAC = (): SetLoadingStatusActionType => {
-    return {
-        type: 'LOADING-NOT-ACTIVE',
-        payload: {
-            isLoading: false,
-        }
-    } as const
-}
+
 // fix any
