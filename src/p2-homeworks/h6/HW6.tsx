@@ -3,7 +3,6 @@ import SuperEditableSpan from './common/c4-SuperEditableSpan/SuperEditableSpan'
 import SuperButton from '../h4/common/c2-SuperButton/SuperButton'
 import {restoreState, saveState} from './localStorage/localStorage'
 import s from './HW6.module.css'
-import {FaRegEdit} from "react-icons/all";
 
 function HW6() {
     const [value, setValue] = useState<string>('')
