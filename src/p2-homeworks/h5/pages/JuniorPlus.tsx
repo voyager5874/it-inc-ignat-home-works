@@ -7,6 +7,7 @@ export function JuniorPlus() {
 
             <img src="https://aardling.com/wp-content/uploads/far-far-away.jpg" alt="some pic"/>
 
+
         </div>
     )
 }
