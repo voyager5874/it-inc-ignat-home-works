@@ -25,30 +25,31 @@ const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
     const [leftThumbPos, setLeftThumbPos] = useState(value[0])
     const [rightThumbPos, setRightThumbPos] = useState(value[1])
 
-    const getBarFillPercent = (value: number) => Math.round(((value - min) / (max - min)) * 100)
-    const [barFillState, setBarFillState] = useState([getBarFillPercent(leftThumbPos), getBarFillPercent(rightThumbPos) - getBarFillPercent(leftThumbPos)])
+    const getBarFillPercent = (leftThumbPos: number, rightThumbPos: number) => {
+        const barFillLeftShift = Math.round(((leftThumbPos - min) / (max - min)) * 100)
+        const barFillWidth = Math.round(((rightThumbPos - min) / (max - min)) * 100) - barFillLeftShift
+        return [barFillLeftShift, barFillWidth]
+    }
 
-    //make sure that minVal does not exceed maxVal
+    const [barFillState, setBarFillState] = useState(getBarFillPercent(leftThumbPos, rightThumbPos))
+
+    //make sure minVal does not exceed maxVal
     const leftThumbMoveHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newLeftThumbPos = Number(event.currentTarget.value)
         if (newLeftThumbPos < rightThumbPos) {
             onChangeRange && onChangeRange([newLeftThumbPos, rightThumbPos])
-            const leftEdge = getBarFillPercent(newLeftThumbPos)
-            const rightEdge = getBarFillPercent(rightThumbPos) - leftEdge
-            setBarFillState([leftEdge, rightEdge])
+            setBarFillState(getBarFillPercent(newLeftThumbPos, rightThumbPos))
             setLeftThumbPos(newLeftThumbPos)
         }
         return
     }
 
-//make sure that maxVal does not fall below minVal
+    //make sure maxVal does not fall below minVal
     const rightThumbMoveHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newRightThumbValue = Number(event.currentTarget.value)
         if (newRightThumbValue > leftThumbPos) {
             onChangeRange && onChangeRange([leftThumbPos, newRightThumbValue])
-            const leftEdge = getBarFillPercent(leftThumbPos);
-            const rightEdge = getBarFillPercent(newRightThumbValue) - leftEdge;
-            setBarFillState([leftEdge, rightEdge])
+            setBarFillState(getBarFillPercent(leftThumbPos, newRightThumbValue))
             setRightThumbPos(newRightThumbValue)
         }
         return
