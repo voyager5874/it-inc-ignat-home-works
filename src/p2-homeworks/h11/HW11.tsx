@@ -26,16 +26,17 @@ function HW11() {
 
 
             {/*should work (должно работать)*/}
-            <div>
-                <span>{value1}</span>
+            <div className={s.superRangeContainer}>
+                <span className={s.sliderValue}>{value1}</span>
                 <SuperRange
+                    max={MAX_VALUE}
                     onChangeRange={setValue1}
                     value={value1}
                 />
             </div>
 
             <div className={s.doubleRangeContainer}>
-                <span>{value1}</span>
+                <span className={s.sliderValue}>{value1}</span>
                 <SuperDoubleRange
                     value={[value1, value2]}
                     max={MAX_VALUE}
@@ -43,7 +44,7 @@ function HW11() {
                     onChangeRange={doubleRangeChangeHandler}
                     // сделать так чтоб value1 и value2 изменялось
                 />
-                <span>{value2}</span>
+                <span className={s.sliderValue}>{value2}</span>
             </div>
 
             <hr/>

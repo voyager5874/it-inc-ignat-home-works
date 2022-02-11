@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react'
+import React, {useState} from 'react'
 import styles from "./SuperDoubleRange.module.css"
 
 type SuperDoubleRangePropsType = {
@@ -21,60 +21,41 @@ const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
 ) => {
     // сделать самому, можно подключать библиотеки
 
-    const [minVal, setMinVal] = useState(value[0]);
-    const [maxVal, setMaxVal] = useState(value[1]);
 
-    const minValRef = useRef<HTMLInputElement>(null);
-    const maxValRef = useRef<HTMLInputElement>(null);
-    const range = useRef<HTMLDivElement>(null);
+    const [leftThumbPos, setLeftThumbPos] = useState(value[0])
+    const [rightThumbPos, setRightThumbPos] = useState(value[1])
 
-    const getPercent = useCallback(
-        (value: number) => Math.round(((value - min) / (max - min)) * 100),
-        [min, max]
-    );
-
-    useEffect(() => {
-        if (maxValRef.current) {
-            const minPercent = getPercent(minVal);
-            const maxPercent = getPercent(+maxValRef.current.value);
-
-            if (range.current) {
-                range.current.style.left = `${minPercent}%`;
-                range.current.style.width = `${maxPercent - minPercent}%`;
-            }
-        }
-    }, [minVal, getPercent]);
-
-
-    useEffect(() => {
-        if (minValRef.current) {
-            const minPercent = getPercent(+minValRef.current.value);
-            const maxPercent = getPercent(maxVal);
-
-            if (range.current) {
-                range.current.style.width = `${maxPercent - minPercent}%`;
-            }
-        }
-    }, [maxVal, getPercent]);
+    const getBarFillPercent = (value: number) => Math.round(((value - min) / (max - min)) * 100)
+    const [barFillState, setBarFillState] = useState([getBarFillPercent(leftThumbPos), getBarFillPercent(rightThumbPos) - getBarFillPercent(leftThumbPos)])
 
     //make sure that minVal does not exceed maxVal
     const leftThumbMoveHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        //maxVal - 1 maintains difference between minVal and maxVal
-        const value = Math.min(+event.currentTarget.value, maxVal - 1);
-        setMinVal(value);
-        event.target.value = value.toString();
-        onChangeRange && onChangeRange([minVal, maxVal])
+        const newLeftThumbPos = Number(event.currentTarget.value)
+        if (newLeftThumbPos < rightThumbPos) {
+            onChangeRange && onChangeRange([newLeftThumbPos, rightThumbPos])
+            const leftEdge = getBarFillPercent(newLeftThumbPos)
+            const rightEdge = getBarFillPercent(rightThumbPos) - leftEdge
+            setBarFillState([leftEdge, rightEdge])
+            setLeftThumbPos(newLeftThumbPos)
+        }
+        return
     }
+
 //make sure that maxVal does not fall below minVal
     const rightThumbMoveHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = Math.max(+event.currentTarget.value, minVal + 1);
-        setMaxVal(value);
-        event.target.value = value.toString();
-        onChangeRange && onChangeRange([minVal, maxVal])
+        const newRightThumbValue = Number(event.currentTarget.value)
+        if (newRightThumbValue > leftThumbPos) {
+            onChangeRange && onChangeRange([leftThumbPos, newRightThumbValue])
+            const leftEdge = getBarFillPercent(leftThumbPos);
+            const rightEdge = getBarFillPercent(newRightThumbValue) - leftEdge;
+            setBarFillState([leftEdge, rightEdge])
+            setRightThumbPos(newRightThumbValue)
+        }
+        return
     }
 
     //fix for left thumb unable to move when both thumbs pressed to the right (right thumb is above by default)
-    const leftThumbClassName = minVal > max - 100 ? `${styles.thumb} ${styles.thumbZindex5}`
+    const leftThumbClassName = leftThumbPos > max - 100 ? `${styles.thumb} ${styles.thumbZindex5}`
         : `${styles.thumb} ${styles.thumbZindex3}`
 
 
@@ -84,8 +65,7 @@ const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
                 type="range"
                 min={min}
                 max={max}
-                value={minVal}
-                ref={minValRef}
+                value={leftThumbPos}
                 onChange={leftThumbMoveHandler}
                 className={leftThumbClassName}
             />
@@ -93,15 +73,14 @@ const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
                 type="range"
                 min={min}
                 max={max}
-                value={maxVal}
-                ref={maxValRef}
+                value={rightThumbPos}
                 onChange={rightThumbMoveHandler}
                 className={`${styles.thumb} ${styles.thumbZindex4}`}
             />
             <div className={styles.slider}>
                 <div className={styles.sliderTrack}/>
-                {/*ref is for colorizing the bar between thumbs*/}
-                <div ref={range} className={styles.sliderRange}/>
+                <div style={{left: `${barFillState[0]}%`, width: `${barFillState[1]}%`}}
+                     className={styles.sliderRange}/>
             </div>
         </div>
     )
