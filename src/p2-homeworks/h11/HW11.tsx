@@ -6,6 +6,7 @@ import s from './HW11.module.css'
 function HW11() {
     const MIN_VALUE = 0
     const MAX_VALUE = 500
+    const GAP = 48
     const [value1, setValue1] = useState(10)
     const [value2, setValue2] = useState(70)
 
@@ -41,6 +42,7 @@ function HW11() {
                     value={[value1, value2]}
                     max={MAX_VALUE}
                     min={MIN_VALUE}
+                    gap={GAP}
                     onChangeRange={doubleRangeChangeHandler}
                     // сделать так чтоб value1 и value2 изменялось
                 />

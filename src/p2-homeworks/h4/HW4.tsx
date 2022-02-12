@@ -38,13 +38,14 @@ function HW4() {
 
                 {/*----------------------------------------------------*/}
 
-                <SuperButton className={s.greenButton}>
-                    Not just some default
+                <SuperButton className={'greenButton'}>
+                    I am a green button
                 </SuperButton>
 
                 <SuperButton
                     red // пропсу с булевым значением не обязательно указывать true
                     onClick={showAlert}
+                    className={'redButton'}
                 >
                     delete {/*// название кнопки попадёт в children*/}
                 </SuperButton>
@@ -55,7 +56,9 @@ function HW4() {
 
                 {/*----------------------------------------------------*/}
 
-                <SuperCheckbox className={s.sliderCheckbox}
+                <SuperCheckbox
+                    className={'sliderCheckbox'}
+                    spanClassName={'elevatedSpan'}
                     checked={checked}
                     onChangeChecked={setChecked}
                 >
@@ -64,7 +67,10 @@ function HW4() {
                 {/*In JSX expressions that contain both an opening tag and a closing tag, the content between those tags is passed as a special prop: props.children*/}
 
                 {/*// onChange тоже должен работать*/}
-                <SuperCheckbox checked={checked} onChange={testOnChange}/>
+                <SuperCheckbox
+                    checked={checked}
+                    onChange={testOnChange}
+                />
             </div>
 
             <hr/>

@@ -1,13 +1,11 @@
 import React from 'react'
+import HW13 from "../../h13/HW13";
 
 
 export function JuniorPlus() {
     return (
         <div>
-
-            <img src="https://aardling.com/wp-content/uploads/far-far-away.jpg" alt="some pic"/>
-
-
+        <HW13/>
         </div>
     )
 }

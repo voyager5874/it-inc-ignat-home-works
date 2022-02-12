@@ -7,6 +7,7 @@ type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
 type SuperCheckboxPropsType = DefaultInputPropsType & {
     onChangeChecked?: (checked: boolean) => void
     spanClassName?: string
+
 }
 
 const SuperCheckbox: React.FC<SuperCheckboxPropsType> = (
@@ -25,9 +26,11 @@ const SuperCheckbox: React.FC<SuperCheckboxPropsType> = (
         && onChange(e) // то передать ему е (поскольку onChange не обязателен)
         onChangeChecked // если есть пропс onChange
         && onChangeChecked(e.currentTarget.checked) // то передать ему е (поскольку onChange не обязателен)
+
     }
 
-    const finalInputClassName = `${className ? className : s.checkbox}`
+    const finalInputClassName = `${className ? s[className] : s.checkbox}`
+    const spanStyle = spanClassName ? s[spanClassName] : s.defaultSpan
 
     return (
         <label className={`${s.checkboxWrapper}`}>
@@ -38,7 +41,7 @@ const SuperCheckbox: React.FC<SuperCheckboxPropsType> = (
 
                 {...restProps} // отдаём инпуту остальные пропсы если они есть (checked например там внутри)
             />
-            {children && <span className={s.spanClassName}>{children}</span>}
+            {children && <span className={spanStyle}>{children}</span>}
         </label> // благодаря label нажатие на спан передастся в инпут. Если приходит какое-то содержимое (children), то рисуется спан с этим содержимым
         // In JSX expressions that contain both an opening tag and a closing tag, the content between those tags is passed as a special prop: props.children
     )

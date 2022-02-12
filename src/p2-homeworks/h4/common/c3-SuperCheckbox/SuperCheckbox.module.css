@@ -1,10 +1,8 @@
-.checkboxWrapper{
+.checkboxWrapper {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
-    /*max-width: 500px;*/
-    min-width: 100px;
-    height: 50px;
+    display: inline-flex;
+    height: 30px;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
@@ -14,11 +12,18 @@
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 
-.spanClassName {
-cursor: pointer;
+.defaultSpan {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.elevatedSpan {
+    padding: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 .25em rgba(0, 0, 0, .3);
 }
 
 .checkbox {
@@ -30,7 +35,6 @@ cursor: pointer;
 }
 
 
-
 .checkbox:hover {
     background-color: #ccc;
 }
@@ -38,4 +42,44 @@ cursor: pointer;
 .checkbox:checked {
     background-color: #2196F3;
     border: 5px solid white;
+}
+
+.sliderCheckbox {
+    font-size: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 1em;
+    height: 0.5em;
+    background: dimgray;
+    border-radius: 3em;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.sliderCheckbox:checked {
+    background: green;
+}
+
+.sliderCheckbox:after {
+    position: absolute;
+    content: "";
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 50%;
+    background: #fff;
+    -webkit-box-shadow: 0 0 .25em rgba(0, 0, 0, .3);
+    box-shadow: 0 0 .25em rgba(0, 0, 0, .3);
+    -webkit-transform: scale(.7);
+    transform: scale(.7);
+    left: 0;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.sliderCheckbox:checked:after {
+    left: calc(100% - 0.5em);
 }
