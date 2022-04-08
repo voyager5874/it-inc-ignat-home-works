@@ -1,5 +1,8 @@
 import React, {useState} from 'react'
 import styles from "./SuperDoubleRange.module.css"
+import {useSelector} from "react-redux";
+import {AppStoreType} from "../../../h10/bll/store";
+import {ColorThemesListType} from "../../../h12/bll/themeReducer";
 
 type SuperDoubleRangePropsType = {
     onChangeRange?: (value: [number, number]) => void
@@ -21,6 +24,8 @@ const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
     }
 ) => {
     // сделать самому, можно подключать библиотеки
+    const colorTheme = useSelector<AppStoreType, ColorThemesListType>(
+        state => state.uiStyle.colorTheme);
 
     const getBarFillPercent = (leftThumbPos: number, rightThumbPos: number) => {
         const barFillLeftShift = Math.round(((leftThumbPos - min) / (max - min)) * 100)
@@ -51,10 +56,8 @@ const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
     }
 
     //fix for left thumb unable to move when both thumbs pressed to the right (right thumb is above by default)
-    const leftThumbClassName = value[0] > max - 100 ? `${styles.thumb} ${styles.thumbZindex5}`
-        : `${styles.thumb} ${styles.thumbZindex3}`
-
-
+    const leftThumbClassName = value[0] > max - 100 ? `${styles.thumb} ${styles.thumbZindex5} ${styles[colorTheme]}`
+        : `${styles.thumb} ${styles.thumbZindex3} ${styles[colorTheme]}`
 
 
     return (
@@ -73,12 +76,12 @@ const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
                 max={max}
                 value={value[1]}
                 onChange={rightThumbMoveHandler}
-                className={`${styles.thumb} ${styles.thumbZindex4}`}
+                className={`${styles.thumb} ${styles.thumbZindex4} ${styles[colorTheme]}`}
             />
-            <div className={styles.slider}>
+            <div className={`${styles.slider} ${styles[colorTheme]}`}>
                 <div className={styles.sliderTrack}/>
                 <div style={{left: `${barFillState[0]}%`, width: `${barFillState[1]}%`}}
-                     className={styles.sliderRange}/>
+                     className={`${styles.sliderRange} ${styles[colorTheme]}`}/>
             </div>
         </div>
     )

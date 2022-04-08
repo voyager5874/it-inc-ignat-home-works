@@ -37,7 +37,7 @@ function HW8() {
 
     return (
         <div className={s.taskContent}>
-            <hr/>
+            <hr style={{width:"90%"}}/>
             <h3>homework 8</h3>
             {/*should work (должно работать)*/}
             <div className={s.usersTableWrapper}>
@@ -48,10 +48,10 @@ function HW8() {
                 <SuperButton onClick={sortDown}>sort down</SuperButton>
                 <SuperButton onClick={()=>check(18)}>check 18</SuperButton>
             </div>
-            <hr/>
+
             {/*для личного творчества, могу проверить*/}
             {/*<AlternativePeople/>*/}
-            <hr/>
+            <hr style={{width:"90%"}}/>
         </div>
     )
 }

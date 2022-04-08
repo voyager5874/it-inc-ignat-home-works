@@ -1,18 +1,20 @@
 
-.wrapper {
+.taskContent {
+    /*background-color: rgb(187, 183, 110);*/
     display: inline-flex;
     flex-direction: column;
-    min-width: 300px;
+    min-width: 500px;
     min-height: 100px;
-    justify-content: space-between;
+    align-items: center;
 }
 
 .affairsContainer {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     border-radius: 10px;
     background-color: dimgrey;
     padding: 10px;
@@ -20,11 +22,10 @@
 
 .buttonsContainer {
     display: flex;
+    width: 100%;
     flex-direction: row;
     height: 40px;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding-left: 20px;
+    justify-content: space-around;
 }
 
 .affair {
@@ -51,10 +52,7 @@
 }
 
 .filterButton {
-    height: 30px;
-    width: 60px;
-    font-weight: bold;
-    border-radius: 5px;
+
 }
 
 .high{
