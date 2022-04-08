@@ -1,5 +1,8 @@
 import React, {SelectHTMLAttributes, DetailedHTMLProps, ChangeEvent} from 'react'
 import s from './SuperSelect.module.css'
+import {useSelector} from "react-redux";
+import {AppStoreType} from "../../../h10/bll/store";
+import {ColorThemesListType} from "../../../h12/bll/themeReducer";
 
 type DefaultSelectPropsType = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
 
@@ -15,6 +18,9 @@ const SuperSelect: React.FC<SuperSelectPropsType> = (
         ...restProps
     }
 ) => {
+    const colorTheme = useSelector<AppStoreType, ColorThemesListType>(state => state.uiStyle.colorTheme)
+    const combinedClassName = `${s.select} ${s[colorTheme]}`
+
     const mappedOptions: any[] = options ? options.map((item, index) =>
             <option
                 key={index}
@@ -31,7 +37,7 @@ const SuperSelect: React.FC<SuperSelectPropsType> = (
     }
 
     return (
-        <select className={s.select} value={value} onChange={onChangeCallback} {...restProps}>
+        <select className={combinedClassName} value={value} onChange={onChangeCallback} {...restProps}>
             {mappedOptions}
         </select>
     )

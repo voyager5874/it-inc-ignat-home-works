@@ -1,5 +1,13 @@
-.App {
+.default {
     padding-left: 20px;
     background-color: lightslategrey;
     min-height: 100vh;
+}
+
+.dark{
+    background-color: rgb(24, 15, 15);
+}
+
+.lime{
+    background-color: #c1c772;
 }

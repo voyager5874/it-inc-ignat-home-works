@@ -36,7 +36,7 @@ function HW8() {
     const check = (age:number) => setPeople(homeWorkReducer(initialPeople, {type: 'check', payload: age}))
 
     return (
-        <div>
+        <div className={s.taskContent}>
             <hr/>
             <h3>homework 8</h3>
             {/*should work (должно работать)*/}

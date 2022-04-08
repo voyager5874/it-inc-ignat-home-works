@@ -1,14 +1,22 @@
+.taskContent{
+    /*background-color: #61dafb;*/
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 .usersTableWrapper{
-    width: 200px;
+    box-sizing: border-box;
+    width: 350px;
     padding: 20px;
     background-color: rgba(76, 110, 145, 0.47);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 20px;
 }
 
 .userLineWrapper{
     display: flex;
     justify-content: space-between;
-    padding: 2px;
+    padding: 4px;
     /*border: 1px solid black;*/
 }
 .userLineWrapper span{
@@ -16,8 +24,9 @@
 }
 
 .controlsWrapper{
-    margin-top: 20px;
+    /*background-color: rgba(149,180,62,0.46);*/
     display: flex;
-    /*justify-content: space-between;*/
+    width: 350px;
+    justify-content: space-around;
 
 }
