@@ -14,35 +14,36 @@ function HW6() {
         let defaultValue = 'nothing to restore'
         let storedValue = restoreState<string>('editable-span-value', defaultValue)
         setValue(storedValue)
-        if (storedValue === defaultValue) setTimeout(()=>setValue(''), 1000)
+        if (storedValue === defaultValue) setTimeout(() => setValue(''), 1000)
     }
 
     return (
         <div>
             <hr/>
             <h3>homework 6</h3>
-<div className={s.contentWrapper}>
-    {/*should work (должно работать)*/}
-    <div className={s.textFieldWrapper}>
-        {/*<FaRegEdit />*/}
-        <SuperEditableSpan
-            value={value}
-            onChangeText={setValue}
-            spanProps={{children: value ? undefined : 'enter text...'}}
-        />
-    </div>
-    <div className={s.buttonsWrapper}>
-        <SuperButton onClick={save}>save</SuperButton>
-        <SuperButton onClick={restore}>restore</SuperButton>
-    </div>
+            <div className={s.contentWrapper}>
+                {/*should work (должно работать)*/}
+                <div className={s.textFieldWrapper}>
+                    {/*<FaRegEdit />*/}
+                    <SuperEditableSpan
+                        value={value}
+                        onChangeText={setValue}
+                        spanProps={{children: value ? undefined : 'enter text...'}}
+                        className={s.textFieldInEditMode}
+                        spanClassName={s.textFieldInDisplayMode}
+                    />
+                </div>
+                <div className={s.buttonsContainer}>
+                    <SuperButton onClick={save}>save</SuperButton>
+                    <SuperButton onClick={restore}>restore</SuperButton>
+                </div>
 
 
-    {/*<hr/>*/}
-    {/*/!*для личного творчества, могу проверить*!/*/}
-    {/*/!*<AlternativeSuperEditableSpan/>*!/*/}
-    {/*<hr/>*/}
-</div>
-
+                {/*<hr/>*/}
+                {/*/!*для личного творчества, могу проверить*!/*/}
+                {/*/!*<AlternativeSuperEditableSpan/>*!/*/}
+                {/*<hr/>*/}
+            </div>
         </div>
     )
 }

@@ -38,7 +38,7 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
         && onEnter() // то вызвать его
     }
 
-    const finalSpanClassName = `${spanClassName ? spanClassName : ''} ${s.error}` //span будет отрисован только если в пропсах придет ошибка,
+    const finalSpanClassName = `${s.error} ${spanClassName}` //span будет отрисован только если в пропсах придет ошибка,
     // если в пропсах придет доп класс для span, он добавится. Порядок в строке выше не влияет - если в пропсах синий текст, то он синий на странице
     const finalInputClassName = `${s.input} ${onEnter ? s.superInput : ''} ${error ? s.errorInput : ''} ${className}` //может отрисовываться как обычный инпут так и superInput,
     // класс для superInput нужно добавлять только, если в пропсах приходит что-то относящееся к superInput (onChangeText, onEnter...), error не подойдет - может
@@ -46,7 +46,7 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
     // приходит из HW4.module.css и добавляет подчеркивание синим
 
     return (
-        <>
+        <div className={s.componentContainer}>
             <input
                 type={'text'}
                 onChange={onChangeCallback}
@@ -56,7 +56,7 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
                 {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
             />
             {error && <span className={finalSpanClassName}>{error}</span>}
-        </>
+        </div>
     )
 }
 

@@ -29,28 +29,28 @@ function HW4() {
                     onChangeText={setText}
                     onEnter={showAlert}
                     error={error}
-                    spanClassName={s.testSpanError}
+                    spanClassName={`${s.testSpanError} ${s.hw4Item}` }
                 />
 
                 <SuperInputText
-                    className={s.blue} // проверьте, рабоет ли смешивание классов
+                    className={`${s.blue} ${s.hw4Item}`} // проверьте, рабоет ли смешивание классов
                 />
 
                 {/*----------------------------------------------------*/}
 
-                <SuperButton className={'greenButton'}>
+                <SuperButton className={s.hw4Item}>
                     I am a green button
                 </SuperButton>
 
                 <SuperButton
                     red // пропсу с булевым значением не обязательно указывать true
                     onClick={showAlert}
-                    className={'redButton'}
+                    className={s.hw4Item}
                 >
                     delete {/*// название кнопки попадёт в children*/}
                 </SuperButton>
 
-                <SuperButton disabled>
+                <SuperButton disabled className={s.hw4Item}>
                     disabled
                 </SuperButton>
 

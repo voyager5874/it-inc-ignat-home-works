@@ -24,7 +24,7 @@ const SuperButton: React.FC<SuperButtonPropsType> = (
         state => state.uiStyle.controlsShape);
 
     // const finalClassName = `${red ? s.red : s.default} ${className}` //или по умолчанию или стиль "красный" плюс стиль из пропсов
-    const finalClassName = `${s.default} ${className ? s[className] : '' } ${s[colorTheme]} ${s[shapeConfig]}`
+    const finalClassName = `${s.default} ${className}  ${red ? s.redButton : '' } ${s[colorTheme]} ${s[shapeConfig]}`
 
     return (
         <button

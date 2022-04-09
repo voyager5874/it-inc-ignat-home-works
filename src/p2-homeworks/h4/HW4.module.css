@@ -9,7 +9,6 @@
     align-items: center;
     /*для верстки*/
     border: 2px solid black;
-    height: 300px;
 }
 
 .testSpanError {
@@ -17,6 +16,9 @@
     height: 20px;
 }
 
+.hw4Item{
+    margin-bottom: 20px;
+}
 
 
 

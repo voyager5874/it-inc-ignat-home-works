@@ -25,12 +25,12 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
         autoFocus, // игнорировать изменение этого пропса
         onBlur,
         onEnter,
-        spanProps,
-
+        spanProps, spanClassName,
         ...restProps// все остальные пропсы попадут в объект restProps
     }
 ) => {
     const [editMode, setEditMode] = useState<boolean>(false)
+    const [showIcon, setShowIcon] = useState<boolean>(false)
     const {children, onDoubleClick, className, ...restSpanProps} = spanProps || {}
 
     const onEnterCallback = () => {
@@ -49,8 +49,12 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
         onDoubleClick && onDoubleClick(e)
     }
 
+    const handleDisplayingEditIcon = () => {
+        setShowIcon(!showIcon)
+    }
+
     // const spanClassName = `${s.editableSpan} ${className}`
-    const spanClassName = `${s.editableSpan}`
+    const spanFinalClassName = `${s.span} ${spanClassName} ${showIcon ? s.highlighted : ''}`
 
     return (
         <>
@@ -60,24 +64,27 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
                         autoFocus // пропсу с булевым значением не обязательно указывать true
                         onBlur={onBlurCallback}
                         onEnter={onEnterCallback}
-
+                        className={s.input}
                         {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
                     />
                 ) : (
                     <span
+                        onMouseEnter={handleDisplayingEditIcon}
+                        onMouseLeave={handleDisplayingEditIcon}
                         onDoubleClick={onDoubleClickCallBack}
-                        className={spanClassName}
+                        className={spanFinalClassName}
 
                         {...restSpanProps}
                     >
 
                         {/*если нет захардкодженного текста для спана, то значение инпута*/}
-                        <span style={{display:'inline-block'}}>{children || restProps.value}</span>
+                        <span>{children || restProps.value}</span>
 
 
-                        <IconContext.Provider value={{ style: { cursor: 'pointer', marginLeft: '10px', paddingTop:'4px' } }}>
-                                 <FaRegEdit onClick={()=>setEditMode(true)}/>
-                        </IconContext.Provider>
+                        {showIcon && <IconContext.Provider
+                            value={{style: {cursor: 'pointer', marginLeft: '10px', paddingTop: '4px'}}}>
+                            <FaRegEdit onClick={() => setEditMode(true)} />
+                        </IconContext.Provider>}
 
                     </span>
                 )
